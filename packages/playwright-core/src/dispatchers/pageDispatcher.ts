@@ -66,7 +66,7 @@ export class PageDispatcher extends Dispatcher<Page, channels.PageChannel> imple
     page.on(Page.Events.DOMContentLoaded, () => this._dispatchEvent('domcontentloaded'));
     page.on(Page.Events.Dialog, dialog => this._dispatchEvent('dialog', { dialog: new DialogDispatcher(this._scope, dialog) }));
     page.on(Page.Events.Download, (download: Download) => {
-      this._dispatchEvent('download', { url: download.url, suggestedFilename: download.suggestedFilename(), artifact: new ArtifactDispatcher(scope, download.artifact) });
+      this._dispatchEvent('download', { url: download.url, suggestedFilename: download.suggestedFilename(), uuid: download.uuid(), artifact: new ArtifactDispatcher(scope, download.artifact) });
     });
     this._page.on(Page.Events.FileChooser, (fileChooser: FileChooser) => this._dispatchEvent('fileChooser', {
       element: ElementHandleDispatcher.from(this._scope, fileChooser.element()),

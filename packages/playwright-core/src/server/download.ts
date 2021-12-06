@@ -24,6 +24,7 @@ export class Download {
   readonly url: string;
   private _page: Page;
   private _suggestedFilename: string | undefined;
+  private _uuid: string | undefined;
 
   constructor(page: Page, downloadsPath: string, uuid: string, url: string, suggestedFilename?: string) {
     const unaccessibleErrorMessage = !page._browserContext._options.acceptDownloads ? 'Pass { acceptDownloads: true } when you are creating your browser context.' : undefined;
@@ -33,6 +34,7 @@ export class Download {
     this._page = page;
     this.url = url;
     this._suggestedFilename = suggestedFilename;
+    this._uuid = uuid;
     page._browserContext._downloads.add(this);
     if (suggestedFilename !== undefined)
       this._page.emit(Page.Events.Download, this);
@@ -46,5 +48,9 @@ export class Download {
 
   suggestedFilename(): string {
     return this._suggestedFilename!;
+  }
+
+  uuid(): string {
+    return this._uuid!;
   }
 }

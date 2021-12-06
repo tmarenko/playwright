@@ -23,12 +23,14 @@ export class Download implements api.Download {
   private _page: Page;
   private _url: string;
   private _suggestedFilename: string;
+  private _uuid: string;
   private _artifact: Artifact;
 
-  constructor(page: Page, url: string, suggestedFilename: string, artifact: Artifact) {
+  constructor(page: Page, url: string, suggestedFilename: string, uuid:string, artifact: Artifact) {
     this._page = page;
     this._url = url;
     this._suggestedFilename = suggestedFilename;
+    this._uuid = uuid;
     this._artifact = artifact;
   }
 
@@ -42,6 +44,10 @@ export class Download implements api.Download {
 
   suggestedFilename(): string {
     return this._suggestedFilename;
+  }
+
+  uuid(): string {
+    return this._uuid;
   }
 
   async path(): Promise<string | null> {

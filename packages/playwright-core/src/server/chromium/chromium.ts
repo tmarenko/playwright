@@ -58,7 +58,7 @@ export class Chromium extends BrowserType {
     }, TimeoutSettings.timeout({ timeout }));
   }
 
-  async _connectOverCDPInternal(progress: Progress, endpointURL: string, options: { slowMo?: number, headers?: types.HeadersArray }, onClose?: () => Promise<void>) {
+  async _connectOverCDPInternal(progress: Progress, endpointURL: string, options: { slowMo?: number, headers?: types.HeadersArray, downloadsPath?: string }, onClose?: () => Promise<void>) {
     let headersMap: { [key: string]: string; } | undefined;
     if (options.headers)
       headersMap = headersArrayToObject(options.headers, false);
@@ -90,7 +90,7 @@ export class Chromium extends BrowserType {
       protocolLogger: helper.debugProtocolLogger(),
       browserLogsCollector: new RecentLogsCollector(),
       artifactsDir,
-      downloadsPath: artifactsDir,
+      downloadsPath: (options.downloadsPath || artifactsDir)!,
       tracesDir: artifactsDir,
       // On Windows context level proxies only work, if there isn't a global proxy
       // set. This is currently a bug in the CR/Windows networking stack. By

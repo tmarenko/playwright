@@ -15526,6 +15526,13 @@ export interface ConnectOverCDPOptions {
    * disable timeout.
    */
   timeout?: number;
+
+  /**
+   * If specified, accepted downloads are downloaded into this directory. Otherwise, temporary directory is created and is
+   * deleted when browser is closed. In either case, the downloads are deleted when the browser context they were created in
+   * is closed.
+   */
+  downloadsPath?: string;
 }
 
 export interface ConnectOptions {

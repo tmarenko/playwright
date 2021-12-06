@@ -209,6 +209,7 @@ export class BrowserType extends ChannelOwner<channels.BrowserTypeChannel> imple
       endpointURL,
       headers,
       slowMo: params.slowMo,
+      downloadsPath: params.downloadsPath,
       timeout: params.timeout
     });
     const browser = Browser.from(result.browser);

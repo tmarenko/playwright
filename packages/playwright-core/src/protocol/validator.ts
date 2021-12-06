@@ -347,6 +347,7 @@ export function createScheme(tChannel: (name: string) => Validator): Scheme {
     headers: tOptional(tArray(tType('NameValue'))),
     slowMo: tOptional(tNumber),
     timeout: tOptional(tNumber),
+    downloadsPath: tOptional(tString),
   });
   scheme.BrowserCloseParams = tOptional(tObject({}));
   scheme.BrowserKillForTestsParams = tOptional(tObject({}));

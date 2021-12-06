@@ -553,6 +553,7 @@ export type BrowserTypeConnectParams = {
   wsEndpoint: string,
   headers?: any,
   slowMo?: number,
+  downloadsPath?: string,
   timeout?: number,
 };
 export type BrowserTypeConnectOptions = {
@@ -767,6 +768,7 @@ export type BrowserTypeConnectOverCDPParams = {
   headers?: NameValue[],
   slowMo?: number,
   timeout?: number,
+  downloadsPath?: string
 };
 export type BrowserTypeConnectOverCDPOptions = {
   headers?: NameValue[],
@@ -1351,6 +1353,7 @@ export type PageDialogEvent = {
 export type PageDownloadEvent = {
   url: string,
   suggestedFilename: string,
+  uuid: string,
   artifact: ArtifactChannel,
 };
 export type PageDomcontentloadedEvent = {};

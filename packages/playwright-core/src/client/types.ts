@@ -73,6 +73,7 @@ export type ConnectOptions = {
   headers?: { [key: string]: string; };
   slowMo?: number,
   timeout?: number,
+  downloadsPath?: string,
   logger?: Logger,
 };
 export type LaunchServerOptions = {

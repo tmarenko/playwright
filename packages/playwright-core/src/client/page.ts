@@ -126,9 +126,9 @@ export class Page extends ChannelOwner<channels.PageChannel> implements api.Page
       }
     });
     this._channel.on('domcontentloaded', () => this.emit(Events.Page.DOMContentLoaded, this));
-    this._channel.on('download', ({ url, suggestedFilename, artifact }) => {
+    this._channel.on('download', ({ url, suggestedFilename, uuid, artifact }) => {
       const artifactObject = Artifact.from(artifact);
-      this.emit(Events.Page.Download, new Download(this, url, suggestedFilename, artifactObject));
+      this.emit(Events.Page.Download, new Download(this, url, suggestedFilename, uuid, artifactObject));
     });
     this._channel.on('fileChooser', ({ element, isMultiple }) => this.emit(Events.Page.FileChooser, new FileChooser(this, ElementHandle.from(element), isMultiple)));
     this._channel.on('frameAttached', ({ frame }) => this._onFrameAttached(Frame.from(frame)));
